@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>form fill</title>
+  <style>
+    input {
+      display: block;
+    }
+    .contF {
+      height: auto;
+      width: auto;
+      background-color: blue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .form {
+      background-color: yellow;
+      height: auto;
+    }
+    #btn {
+      height: 40px;
+      width: 70%;
+    }
+    .student-List {
+      background-color: red;
+      margin-top: 30px;
+    }
+    .card {
+      display: flex;
+      background-color: green;
+      padding: 10px 10px;
+      margin: 10px 0px;
+    }
+    .student-details {
+      margin: 0px 10px;
+      width: 90%;
+    }
+    .std1 {
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 18px;
+      border: solid 2px yellow;
+    }
+    .std2 {
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 18px;
+      color: red;
+    }
+    .std3 {
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 18px;
+    }
+    img {
+      background: url('unsplash24.jpg');
+    }
+  </style>
+</head>
+<body class="Main1">
+  <div class="contF">
+    <div class="form">
+      <h2>reg</h2>
+      <form action="">
+        <label for="fname">FristName</label>
+        <input type="text" name="FristName" id="fname" value="" />
+        <label for="Lname">LastName</label>
+        <input type="text" name="LastName" id="Lname" value="seth" />
+        <label for="email">Email</label>
+        <input type="email" name="Email" id="email" value="" />
+        <label for="age">Age</label>
+        <input type="number" name="Age" id="age" value="" />
+        <label for="country">Country</label>
+        <select name="country" id="country">
+          <option value="UK">UK</option>
+          <option value="Kenya">Kenya</option>
+        </select>
+        <input type="button" name="" id="btn" value="submit" />
+      </form>
+    </div>
+  </div>
+
+  <script>
+    let full = document.querySelector("#btn");
+    full.style.background = 'red';
+    let body = document.querySelector(".Main1");
+    body.style.background = '#312f9667';
+    
+    let buttonSub = document.querySelector("#btn");
+    buttonSub.addEventListener('click', displayStud);
+
+    function displayStud() {
+      let fname1 = document.getElementById('fname').value;
+      let Lname2 = document.getElementById('Lname').value;
+      let email3 = document.getElementById('email').value;
+      let country = document.querySelector("#country").value;
+
+      let divE = document.createElement('div');
+      divE.classList.add('student-List');
+      divE.innerHTML = '<h2>Student Details</h2>';
+
+      let card = document.createElement('div');
+      card.classList.add('card');
+
+      let img = document.createElement('img');
+      img.style.height = "70px";
+      img.style.width = "110px";
+      img.src = "unsplash24.jpg";
+      card.appendChild(img);
+
+      let studD = document.createElement('div');
+      studD.classList.add('student-details');
+
+      let std1 = document.createElement('div');
+      std1.classList.add('std1');
+      std1.innerHTML = `<p>${fname1} ${Lname2}</p>`;
+      studD.appendChild(std1);
+
+      let std2 = document.createElement('div');
+      std2.classList.add('std2');
+      std2.innerHTML = `<p>${email3}</p>`;
+      studD.appendChild(std2);
+
+      let std3 = document.createElement('div');
+      std3.classList.add('std3');
+      std3.innerHTML = `${country}`;
+      studD.appendChild(std3);
+
+      card.appendChild(studD);
+
+      let Dcard = document.createElement('div');
+     // Dcard.style.background="white";
+      Dcard.innerHTML = '<button class="remove-card">x</button>';
+      Dcard.classList.add('div-remove-card');
+      card.appendChild(Dcard);
+
+      divE.appendChild(card);
+      let ContM = document.querySelector('.Main1');
+      ContM.appendChild(divE);
+
+      // Add event listener to the remove button
+ Dcard.querySelector('.remove-card').addEventListener('click', function() {
+  this.style.background="blue";
+        ContM.removeChild(divE);
+      });
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+  </script>
+</body>
+</html>
